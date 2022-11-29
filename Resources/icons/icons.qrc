@@ -1,0 +1,12 @@
+<!DOCTYPE RCC>
+
+<RCC version="1.0">
+  <qresource prefix="/icons">
+
+    <file>back-arrow.png</file>
+
+    <file>settings.svg</file>
+
+  </qresource>
+</RCC>
+

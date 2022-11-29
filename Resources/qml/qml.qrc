@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/qml">
+        <file>Main.qml</file>
+        <file>CalculateView.qml</file>
+        <file>SettingsView.qml</file>
+        <file>TopBar.qml</file>
+        <file>CounterCell.qml</file>
+        <file>DigitsTextInput.qml</file>
+        <file>CalculateSummaryControl.qml</file>
+        <file>CustomButton.qml</file>
+        <file>SettingsPanel.qml</file>
+        <file>SettingCell.qml</file>
+        <file>TariffSettingsPanel.qml</file>
+    </qresource>
+</RCC>
