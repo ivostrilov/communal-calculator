@@ -158,6 +158,7 @@ void AppCfgManager::SaveFile(Wrappers::STDOfStreamWrapper &of_stream,
   }
 
   of_stream.Write(data, static_cast<long>(size));
+  of_stream << std::endl;
   of_stream.Close();
 }
 
