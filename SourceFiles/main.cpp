@@ -7,7 +7,6 @@
 // TODO(i.vostrilov): min size for main window
 // TODO(i.vostrilov): russian language
 // TODO(i.vostrilov): config file ended by a new line
-// TODO(i.vostrilov): button for moving current -> previous
 // TODO(i.vostrilov): size of calculation log font a little bit bigger
 
 inline constexpr char const *kMainQmlPath = "qrc:/qml/Main.qml";

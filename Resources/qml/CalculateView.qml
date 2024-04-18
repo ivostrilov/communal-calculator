@@ -97,12 +97,39 @@ Page {
 
         spacing: 10
 
+        CounterValuesControlCell {
+            id: counterValuesControlCell
+
+            Layout.alignment: internal.counterCellsAlignment
+            Layout.leftMargin: internal.counterCellsLeftMargins
+            Layout.topMargin: 16;
+            Layout.rightMargin: internal.counterCellsRightMargins
+            Layout.fillWidth: internal.counterCellsFillWidth
+            height: internal.counterCellsFillHeight
+
+            onMoveCurrentToPreviousClicked: {
+                coldWaterCounterCell.prevDigitsTextInput.text = coldWaterCounterCell.curDigitsTextInput.text
+                coldWaterCounterCell.curDigitsTextInput.text = ""
+
+                hotWaterCounterCell.prevDigitsTextInput.text = hotWaterCounterCell.curDigitsTextInput.text
+                hotWaterCounterCell.curDigitsTextInput.text = ""
+
+                electricityT1CounterCell.prevDigitsTextInput.text = electricityT1CounterCell.curDigitsTextInput.text
+                electricityT1CounterCell.curDigitsTextInput.text = ""
+
+                electricityT2CounterCell.prevDigitsTextInput.text = electricityT2CounterCell.curDigitsTextInput.text
+                electricityT2CounterCell.curDigitsTextInput.text = ""
+
+                electricityT3CounterCell.prevDigitsTextInput.text = electricityT3CounterCell.curDigitsTextInput.text
+                electricityT3CounterCell.curDigitsTextInput.text = ""
+            }
+        }
+
         CounterCell {
             id: coldWaterCounterCell
 
             Layout.alignment: internal.counterCellsAlignment
             Layout.leftMargin: internal.counterCellsLeftMargins
-            Layout.topMargin: 16;
             Layout.rightMargin: internal.counterCellsRightMargins
             Layout.fillWidth: internal.counterCellsFillWidth
             height: internal.counterCellsFillHeight

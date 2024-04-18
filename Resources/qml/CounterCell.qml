@@ -42,6 +42,16 @@ Rectangle {
             }
         }
 
+        Rectangle {
+            Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
+            Layout.rightMargin: 16
+
+            width: 20
+            height: 20
+
+            color: "transparent"
+        }
+
         DigitsTextInput {
             id: currentDigitsTextInput
 

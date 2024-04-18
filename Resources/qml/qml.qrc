@@ -11,5 +11,6 @@
         <file>SettingsPanel.qml</file>
         <file>SettingCell.qml</file>
         <file>TariffSettingsPanel.qml</file>
+        <file>CounterValuesControlCell.qml</file>
     </qresource>
 </RCC>
