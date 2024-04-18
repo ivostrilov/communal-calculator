@@ -1,6 +1,8 @@
 #include "core/calculator.h"
 
 #include <cassert>
+#include <iomanip>
+#include <sstream>
 #include <utility>
 
 namespace CommunalCalculator::Core {
@@ -140,33 +142,9 @@ auto Calculator::CalculateWaterSinkSummary(std::string *calculation_log)
 }
 
 auto Calculator::ToString(float number) -> std::string {
-  constexpr int kPrecision = 100;
-  constexpr int kReserveSize = 16;
-
-  int integer = std::floor(number);
-
-  auto fractional_float =
-      std::round(std::fabs(number - static_cast<float>(integer)) * kPrecision);
-
-  int fractional_int = static_cast<int>(fractional_float);
-
-  std::string str;
-  str.reserve(kReserveSize);
-
-  str = std::to_string(integer);
-  if (fractional_int == 0) {
-    return str;
-  }
-
-  str += ".";
-  str += std::to_string(fractional_int);
-
-  str.erase(std::find_if(str.rbegin(), str.rend(),
-                         [](unsigned char symbol) { return symbol != '0'; })
-                .base(),
-            str.end());
-
-  return str;
+  std::stringstream stream;
+  stream << std::fixed << std::setprecision(2) << number;
+  return stream.str();
 }
 
 }  // namespace CommunalCalculator::Core
