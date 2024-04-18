@@ -143,7 +143,7 @@ auto Calculator::CalculateWaterSinkSummary(std::string *calculation_log)
 
 auto Calculator::ToString(float number) -> std::string {
   std::stringstream stream;
-  stream << std::fixed << std::setprecision(2) << number;
+  stream << std::fixed << std::setprecision(3) << number;
   return stream.str();
 }
 

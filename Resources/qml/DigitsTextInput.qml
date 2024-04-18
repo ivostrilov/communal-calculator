@@ -24,6 +24,8 @@ Rectangle {
 
         color: "#eeeeee"
 
+        maximumLength: 12
+
         onActiveFocusChanged: {
             activeFocus ? focusCaught() : focusLost()
 

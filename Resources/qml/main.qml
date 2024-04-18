@@ -5,7 +5,7 @@ ApplicationWindow {
     id: applicationWindow
 
     title: qsTr("Communal Calculator")
-    minimumWidth: 600
+    minimumWidth: 800
     minimumHeight: 680
     visible: true
 
