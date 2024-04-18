@@ -2,7 +2,6 @@
 
 #include "view/guid_application.h"
 
-// TODO(i.vostrilov): macos bundle application with logo
 // TODO(i.vostrilov): russian language
 
 inline constexpr char const *kMainQmlPath = "qrc:/qml/Main.qml";

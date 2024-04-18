@@ -4,7 +4,7 @@ if(NOT DEFINED CMAKE_CXX_STANDARD)
   set(CMAKE_CXX_STANDARD 17)
 endif()
 
-project(communal-calculator)
+project(CommunalCalculator)
  
 option(
   COMMUNALCALCULATOR_BUILD_MODEL_TESTS
@@ -93,6 +93,16 @@ source_group(
 set(model_lib_target communal-calculator-model-lib)
 set(app_target ${PROJECT_NAME})
 
+if (APPLE)
+  set(app_target_options MACOSX_BUNDLE)
+  set(app_icon ${CMAKE_CURRENT_SOURCE_DIR}/Resources/macos/calculator.icns)
+
+  set(MACOSX_BUNDLE_BUNDLE_NAME "CommunalCalculator")
+  set(MACOSX_BUNDLE_BUNDLE_VERSION "1.0.0")
+  set(MACOSX_BUNDLE_ICON_FILE calculator)
+  set(MACOSX_BUNDLE_INFO_PLIST ${CMAKE_CURRENT_SOURCE_DIR}/Resources/macos/Info.plist)
+endif()
+
 add_library(
   ${model_lib_target}
   ${model_lib_src}
@@ -106,9 +116,20 @@ target_include_directories(
 
 add_executable(
   ${app_target}
+  ${app_target_options}
   ${app_resources}
+  ${app_icon}
   ${app_src}
 )
+
+if (APPLE)
+  set_source_files_properties(
+    ${app_icon}
+    PROPERTIES
+    MACOSX_PACKAGE_LOCATION
+    "Resources"
+  )
+endif()
 
 target_include_directories(
   ${app_target}
