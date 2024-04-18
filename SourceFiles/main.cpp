@@ -2,10 +2,8 @@
 
 #include "view/guid_application.h"
 
-// TODO(i.vostrilov): catch any std::exception and pring error in main func
 // TODO(i.vostrilov): macos bundle application with logo
 // TODO(i.vostrilov): russian language
-// TODO(i.vostrilov): size of calculation log font a little bit bigger
 
 inline constexpr char const *kMainQmlPath = "qrc:/qml/Main.qml";
 
