@@ -6,6 +6,7 @@ Rectangle {
     property alias backgroundColor: textInputRectangle.color
 
     signal focusLost()
+    signal focusCaught()
 
     id: textInputRectangle
 
@@ -24,8 +25,13 @@ Rectangle {
         color: "#eeeeee"
 
         onActiveFocusChanged: {
-            if (!activeFocus) {
-                focusLost()
+            activeFocus ? focusCaught() : focusLost()
+
+            if (activeFocus) {
+                let value = parseFloat(text)
+                if (value === 0.0) {
+                    text = ""
+                }
             }
         }
 
