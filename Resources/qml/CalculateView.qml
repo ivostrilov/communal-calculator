@@ -5,6 +5,60 @@ import QtQuick.Layouts
 Page {
     id: calculateView
 
+    function getCounterCellsValues() {
+        let values = {
+            "coldWaterPrev": coldWaterCounterCell.prevDigitsTextInput.text,
+            "coldWaterCur": coldWaterCounterCell.curDigitsTextInput.text,
+            "hotWaterPrev": hotWaterCounterCell.prevDigitsTextInput.text,
+            "hotWaterCur": hotWaterCounterCell.curDigitsTextInput.text,
+            "T1Prev": electricityT1CounterCell.prevDigitsTextInput.text,
+            "T1Cur": electricityT1CounterCell.curDigitsTextInput.text,
+            "T2Prev": electricityT2CounterCell.prevDigitsTextInput.text,
+            "T2Cur": electricityT2CounterCell.curDigitsTextInput.text,
+            "T3Prev": electricityT3CounterCell.prevDigitsTextInput.text,
+            "T3Cur": electricityT3CounterCell.curDigitsTextInput.text
+        }
+
+        return values
+    }
+
+    function floatToStr(value) {
+        return Number.parseFloat(value).toFixed(3)
+    }
+
+    function readValuesHistory() {
+        let history = modelView.onReadValuesHistory()
+
+        let coldWaterPrev = floatToStr(history.coldWaterPrev)
+        let coldWaterCur = floatToStr(history.coldWaterCur)
+        coldWaterCounterCell.prevDigitsTextInput.text = coldWaterPrev
+        coldWaterCounterCell.curDigitsTextInput.text = coldWaterCur
+
+        let hotWaterPrev = floatToStr(history.hotWaterPrev)
+        let hotWaterCur = floatToStr(history.hotWaterCur)
+        hotWaterCounterCell.prevDigitsTextInput.text = hotWaterPrev
+        hotWaterCounterCell.curDigitsTextInput.text = hotWaterCur
+
+        let t1Prev = floatToStr(history.T1Prev)
+        let t1Cur = floatToStr(history.T1Cur)
+        electricityT1CounterCell.prevDigitsTextInput.text = t1Prev
+        electricityT1CounterCell.curDigitsTextInput.text = t1Cur
+
+        let t2Prev = floatToStr(history.T2Prev)
+        let t2Cur = floatToStr(history.T2Cur)
+        electricityT2CounterCell.prevDigitsTextInput.text = t2Prev
+        electricityT2CounterCell.curDigitsTextInput.text = t2Cur
+
+        let t3Prev = floatToStr(history.T3Prev)
+        let t3Cur = floatToStr(history.T3Cur)
+        electricityT3CounterCell.prevDigitsTextInput.text = t3Prev
+        electricityT3CounterCell.curDigitsTextInput.text = t3Cur
+    }
+
+    Component.onCompleted: {
+        readValuesHistory()
+    }
+
     Connections {
         target: modelView
         ignoreUnknownSignals: true
@@ -137,20 +191,9 @@ Page {
             backgroundColor: "transparent"
 
             onCalculateSummary: {
-                let values = {
-                    "coldWaterPrev": coldWaterCounterCell.prevDigitsTextInput.text,
-                    "coldWaterCur": coldWaterCounterCell.curDigitsTextInput.text,
-                    "hotWaterPrev": hotWaterCounterCell.prevDigitsTextInput.text,
-                    "hotWaterCur": hotWaterCounterCell.curDigitsTextInput.text,
-                    "T1Prev": electricityT1CounterCell.prevDigitsTextInput.text,
-                    "T1Cur": electricityT1CounterCell.curDigitsTextInput.text,
-                    "T2Prev": electricityT2CounterCell.prevDigitsTextInput.text,
-                    "T2Cur": electricityT2CounterCell.curDigitsTextInput.text,
-                    "T3Prev": electricityT3CounterCell.prevDigitsTextInput.text,
-                    "T3Cur": electricityT3CounterCell.curDigitsTextInput.text
-                }
-
+                let values = getCounterCellsValues()
                 modelView.onCalculateSummary(values)
+                modelView.onSaveValuesHistory(values)
             }
         }
     }

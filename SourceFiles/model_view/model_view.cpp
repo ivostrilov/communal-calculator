@@ -60,6 +60,45 @@ void ModelView::ConnectModel(const std::shared_ptr<Core::Model> &model_view) {
       std::move(on_app_cfg_changed));
 }
 
+void ModelView::onSaveValuesHistory(const QMap<QString, QVariant> &values) {
+  auto history = model_->ReadValuesHistory();
+
+  history.coldWaterPrevious = GetFloat(values, "coldWaterPrev");
+  history.coldWaterCurrent = GetFloat(values, "coldWaterCur");
+
+  history.hotWaterPrevious = GetFloat(values, "hotWaterPrev");
+  history.hotWaterCurrent = GetFloat(values, "hotWaterCur");
+
+  history.electricityT1Previous = GetFloat(values, "T1Prev");
+  history.electricityT1Current = GetFloat(values, "T1Cur");
+
+  history.electricityT2Previous = GetFloat(values, "T2Prev");
+  history.electricityT2Current = GetFloat(values, "T2Cur");
+
+  history.electricityT3Previous = GetFloat(values, "T3Prev");
+  history.electricityT3Current = GetFloat(values, "T3Cur");
+
+  model_->SaveValuesHistory(history);
+}
+
+auto ModelView::onReadValuesHistory() -> QMap<QString, QVariant> {
+  auto history = model_->ReadValuesHistory();
+
+  QMap<QString, QVariant> history_map;
+  history_map.insert("coldWaterPrev", history.coldWaterPrevious);
+  history_map.insert("coldWaterCur", history.coldWaterCurrent);
+  history_map.insert("hotWaterPrev", history.hotWaterPrevious);
+  history_map.insert("hotWaterCur", history.hotWaterCurrent);
+  history_map.insert("T1Prev", history.electricityT1Previous);
+  history_map.insert("T1Cur", history.electricityT1Current);
+  history_map.insert("T2Prev", history.electricityT2Previous);
+  history_map.insert("T2Cur", history.electricityT2Current);
+  history_map.insert("T3Prev", history.electricityT3Previous);
+  history_map.insert("T3Cur", history.electricityT3Current);
+
+  return history_map;
+}
+
 auto ModelView::onGetAppConfiguration() -> QMap<QString, QVariant> {
   auto cfg = model_->appConfigurationObserver_.PullCopy();
 

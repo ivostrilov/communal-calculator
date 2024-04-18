@@ -33,6 +33,8 @@ class ModelView : public QObject,
   void appCfgChanged(const QMap<QString, QVariant> &cfg);
 
  public slots:
+  void onSaveValuesHistory(const QMap<QString, QVariant> &values);
+  auto onReadValuesHistory() -> QMap<QString, QVariant>;
   auto onGetAppConfiguration() -> QMap<QString, QVariant>;
 
   virtual void onCalculateSummary(const QMap<QString, QVariant> &values);

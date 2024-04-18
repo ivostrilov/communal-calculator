@@ -47,6 +47,9 @@ set(
   SourceFiles/model/core/model.cpp
   SourceFiles/model/core/model.h
   SourceFiles/model/core/observer.h
+  SourceFiles/model/core/values_history.h
+  SourceFiles/model/core/values_history_manager.cpp
+  SourceFiles/model/core/values_history_manager.h
   SourceFiles/model/core/workspace.cpp
   SourceFiles/model/core/workspace.h
   SourceFiles/model/wrappers/cstd_wrapper.cpp

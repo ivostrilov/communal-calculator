@@ -19,8 +19,12 @@ TEST_F(ModelTest, CalculateSummaryPassingArgs) {
 }
 
 TEST_F(ModelTest, InitializeSuccessfulFlow) {
+  constexpr std::string_view kDataPath = "123";
+
   EXPECT_CALL(*modelMock_, InitializeConfig);
-  modelMock_->RealInitialize();
+  EXPECT_CALL(*modelMock_, InitializeAppDataDir(::testing::_, ::testing::_,
+                                                ::testing::StrEq(kDataPath)));
+  modelMock_->RealInitialize(kDataPath);
 }
 
 TEST_F(ModelTest, InitializeConfigSuccessfulReading) {

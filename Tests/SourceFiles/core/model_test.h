@@ -24,8 +24,10 @@ class ModelTest : public ::testing::Test {
 
 class ModelMock : public Core::Model {
  public:
-  MOCK_METHOD(void, Initialize, (), (override));
-  void RealInitialize() { Model::Initialize(); }
+  MOCK_METHOD(void, Initialize, (const std::filesystem::path &), (override));
+  void RealInitialize(const std::filesystem::path &path) {
+    Model::Initialize(path);
+  }
 
   MOCK_METHOD(void, CalculateSummary,
               (Calculator::CommunalCounters && counters), (override));
@@ -42,6 +44,12 @@ class ModelMock : public Core::Model {
       Wrappers::STDFilesystemWrapper &filesystem_wrapper) {
     Model::InitializeConfig(app_cfg_manager, workspace, filesystem_wrapper);
   }
+
+  MOCK_METHOD(void, InitializeAppDataDir,
+              (ValuesHistoryManager & values_history_manager,
+               Wrappers::STDFilesystemWrapper &filesystem_wrapper,
+               const std::filesystem::path &app_data_path),
+              (override));
 
   MOCK_METHOD(void, Calculate,
               (Calculator & calculator,
