@@ -5,8 +5,8 @@ ApplicationWindow {
     id: applicationWindow
 
     title: qsTr("Communal Calculator")
-    width: 640
-    height: 720
+    minimumWidth: 600
+    minimumHeight: 680
     visible: true
 
     header: TopBar {
