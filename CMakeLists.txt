@@ -94,7 +94,8 @@ set(model_lib_target communal-calculator-model-lib)
 set(app_target ${PROJECT_NAME})
 
 if (APPLE)
-  set(app_target_options MACOSX_BUNDLE)
+  # TODO(i.vostrilov): fix launch bundle on other computers.
+  # set(app_target_options MACOSX_BUNDLE)
   set(app_icon ${CMAKE_CURRENT_SOURCE_DIR}/Resources/macos/calculator.icns)
 
   set(MACOSX_BUNDLE_BUNDLE_NAME "CommunalCalculator")
